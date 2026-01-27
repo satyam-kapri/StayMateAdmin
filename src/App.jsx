@@ -4,6 +4,7 @@ import Users from "./pages/Users";
 import KYC from "./pages/KYC";
 import Login from "./pages/Login";
 import MainLayout from "./MainLayout";
+import QuestionsManagement from "./pages/QuestionsManagement";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
             <Route path="/users" element={<Users />} />
 
             <Route path="/kyc" element={<KYC />} />
+            <Route
+              path="/questions"
+              element={<QuestionsManagement></QuestionsManagement>}
+            ></Route>
           </Route>
         </Routes>
       </Router>

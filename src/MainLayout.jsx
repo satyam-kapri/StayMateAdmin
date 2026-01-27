@@ -111,6 +111,11 @@ const MainLayout = () => {
               icon: <SafetyCertificateOutlined />,
               label: "KYC Requests",
             },
+            {
+              key: "/questions",
+              icon: <SafetyCertificateOutlined />,
+              label: "Questions Management",
+            },
           ]}
         />
       </Sider>

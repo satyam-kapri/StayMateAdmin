@@ -52,6 +52,37 @@ export const adminAPI = {
       kycStats: kycStats.data.data,
     };
   },
+  createQuestion: async (data) => {
+    const response = await api.post("/profile/questions/create", data);
+    return response.data;
+  },
+
+  updateQuestion: async (id, data) => {
+    const response = await api.patch(`/profile/questions/${id}`, data);
+    return response.data;
+  },
+
+  deleteQuestion: async (id) => {
+    const response = await api.delete(`/profile/questions/${id}`);
+    return response.data;
+  },
+
+  getQuestionCategories: async () => {
+    const response = await api.get("/profile/questions/categories");
+    return response.data;
+  },
+
+  getAllQuestions: async () => {
+    const response = await api.get("/profile/questions");
+    return response.data;
+  },
+
+  reorderQuestion: async (id, direction) => {
+    const response = await api.patch(`/profile/questions/reorder`, {
+      direction,
+    });
+    return response.data;
+  },
 };
 
 export default api;
