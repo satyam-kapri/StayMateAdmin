@@ -87,13 +87,13 @@ const Users = () => {
       dataIndex: ["kyc", "0", "status"],
       key: "kycStatus",
       width: 120, // Added width
-      render: (status) => {
-        if (!status) return <Tag>No KYC</Tag>;
+      render: (kyc) => {
+        if (!kyc.status) return <Tag>No KYC</Tag>;
         let color = "default";
-        if (status === "VERIFIED") color = "success";
-        if (status === "PENDING") color = "processing";
-        if (status === "REJECTED") color = "error";
-        return <Tag color={color}>{status}</Tag>;
+        if (kyc.status === "VERIFIED") color = "success";
+        if (kyc.status === "PENDING") color = "processing";
+        if (kyc.status === "REJECTED") color = "error";
+        return <Tag color={color}>{kyc.status}</Tag>;
       },
     },
     {
