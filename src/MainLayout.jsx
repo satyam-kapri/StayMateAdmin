@@ -116,6 +116,11 @@ const MainLayout = () => {
               icon: <SafetyCertificateOutlined />,
               label: "Questions Management",
             },
+            {
+              key: "/locations",
+              icon: <SafetyCertificateOutlined />,
+              label: "Locations Management",
+            },
           ]}
         />
       </Sider>
