@@ -88,12 +88,12 @@ const Users = () => {
       key: "kycStatus",
       width: 120, // Added width
       render: (kyc) => {
-        if (!kyc.status) return <Tag>No KYC</Tag>;
+        if (!kyc?.status) return <Tag>No KYC</Tag>;
         let color = "default";
-        if (kyc.status === "VERIFIED") color = "success";
-        if (kyc.status === "PENDING") color = "processing";
-        if (kyc.status === "REJECTED") color = "error";
-        return <Tag color={color}>{kyc.status}</Tag>;
+        if (kyc?.status === "VERIFIED") color = "success";
+        if (kyc?.status === "PENDING") color = "processing";
+        if (kyc?.status === "REJECTED") color = "error";
+        return <Tag color={color}>{kyc?.status}</Tag>;
       },
     },
     {
