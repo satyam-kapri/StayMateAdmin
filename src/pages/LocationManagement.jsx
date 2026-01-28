@@ -295,7 +295,7 @@ const LocationsManagement = () => {
             onClick={() => toggleActive(record.id, record.isActive)}
             title={record.isActive ? "Deactivate" : "Activate"}
           />
-          <Popconfirm
+          {/* <Popconfirm
             title="Are you sure to delete this location?"
             description="This action cannot be undone."
             onConfirm={() => handleDelete(record.id)}
@@ -309,7 +309,7 @@ const LocationsManagement = () => {
               icon={<DeleteOutlined />}
               title="Delete"
             />
-          </Popconfirm>
+          </Popconfirm> */}
         </Space>
       ),
     },
