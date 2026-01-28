@@ -5,6 +5,7 @@ import KYC from "./pages/KYC";
 import Login from "./pages/Login";
 import MainLayout from "./MainLayout";
 import QuestionsManagement from "./pages/QuestionsManagement";
+import LocationsManagement from "./pages/LocationManagement";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
             <Route
               path="/questions"
               element={<QuestionsManagement></QuestionsManagement>}
+            ></Route>
+            <Route
+              path="/locations"
+              element={<LocationsManagement></LocationsManagement>}
             ></Route>
           </Route>
         </Routes>

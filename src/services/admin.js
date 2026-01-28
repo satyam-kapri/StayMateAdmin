@@ -83,6 +83,36 @@ export const adminAPI = {
     });
     return response.data;
   },
+  // Locations Management
+  getAllLocations: async () => {
+    const response = await api.get("/locations");
+    return response.data;
+  },
+
+  getLocation: async (id) => {
+    const response = await api.get(`/locations/${id}`);
+    return response.data;
+  },
+
+  createLocation: async (data) => {
+    const response = await api.post("/locations", data);
+    return response.data;
+  },
+
+  updateLocation: async (id, data) => {
+    const response = await api.put(`/locations/${id}`, data);
+    return response.data;
+  },
+
+  deleteLocation: async (id) => {
+    const response = await api.delete(`/locations/${id}`);
+    return response.data;
+  },
+
+  checkLocationUsage: async (id) => {
+    const response = await api.get(`/locations/${id}/usage`);
+    return response.data;
+  },
 };
 
 export default api;
