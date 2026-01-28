@@ -115,19 +115,19 @@ const Users = () => {
             icon={<EyeOutlined />}
             onClick={() => showUserDetail(record)}
           />
-          <Button
+          {/* <Button
             type="link"
             icon={<EditOutlined />}
             onClick={() => handleEdit(record)}
-          />
-          <Popconfirm
+          /> */}
+          {/* <Popconfirm
             title="Are you sure to delete this user?"
             onConfirm={() => handleDelete(record.id)}
             okText="Yes"
             cancelText="No"
           >
             <Button type="link" danger icon={<DeleteOutlined />} />
-          </Popconfirm>
+          </Popconfirm> */}
         </Space>
       ),
     },
