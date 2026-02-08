@@ -230,8 +230,8 @@ const KYC = () => {
                     selectedKYC.status === "VERIFIED"
                       ? "success"
                       : selectedKYC.status === "PENDING"
-                      ? "processing"
-                      : "error"
+                        ? "processing"
+                        : "error"
                   }
                 >
                   {selectedKYC.status}
@@ -268,6 +268,20 @@ const KYC = () => {
                     <Image
                       width={200}
                       src={selectedKYC.idBackUrl}
+                      style={{ marginLeft: 10 }}
+                    />
+                  ) : (
+                    <span style={{ marginLeft: 10, color: "#999" }}>
+                      Not provided
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <strong>Police Verification:</strong>
+                  {selectedKYC.policeVerificationUrl ? (
+                    <Image
+                      width={200}
+                      src={selectedKYC.policeVerificationUrl}
                       style={{ marginLeft: 10 }}
                     />
                   ) : (

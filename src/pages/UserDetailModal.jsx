@@ -124,7 +124,7 @@ const UserDetailModal = ({ visible, onClose, user }) => {
             <Descriptions.Item label="Budget">
               {profile?.budgetMin && profile?.budgetMax
                 ? `${formatCurrency(profile.budgetMin)} - ${formatCurrency(
-                    profile.budgetMax
+                    profile.budgetMax,
                   )}`
                 : "N/A"}
             </Descriptions.Item>
@@ -300,6 +300,22 @@ const UserDetailModal = ({ visible, onClose, user }) => {
                       />
                       <div style={{ marginTop: 8 }}>
                         <Text type="secondary">ID Back</Text>
+                      </div>
+                    </div>
+                  )}
+                  {kycData.policeVerificationUrl && (
+                    <div style={{ textAlign: "center" }}>
+                      <Image
+                        width={200}
+                        height={150}
+                        src={kycData.policeVerificationUrl}
+                        style={{
+                          objectFit: "contain",
+                          border: "1px solid #ddd",
+                        }}
+                      />
+                      <div style={{ marginTop: 8 }}>
+                        <Text type="secondary">Police Verification</Text>
                       </div>
                     </div>
                   )}
