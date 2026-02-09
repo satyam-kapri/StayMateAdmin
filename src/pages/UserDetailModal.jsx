@@ -46,6 +46,34 @@ const UserDetailModal = ({ visible, onClose, user }) => {
     return <Tag color={color}>{status || "N/A"}</Tag>;
   };
 
+  // Helper to render question response based on type
+  const renderQuestionResponse = (response) => {
+    const { question, textValue, numberValue, dateValue, selectedOptions } =
+      response;
+
+    if (selectedOptions && selectedOptions.length > 0 && question?.options) {
+      const selectedTexts = selectedOptions.map((optId) => {
+        const option = question.options.find((o) => o.id === optId);
+        return option ? option.text : "Unknown Option";
+      });
+      return selectedTexts.join(", ");
+    }
+
+    if (dateValue) {
+      return new Date(dateValue).toLocaleDateString();
+    }
+
+    if (numberValue !== null && numberValue !== undefined) {
+      return numberValue.toString();
+    }
+
+    if (textValue) {
+      return textValue;
+    }
+
+    return "N/A";
+  };
+
   if (!user) return null;
 
   return (
@@ -163,13 +191,7 @@ const UserDetailModal = ({ visible, onClose, user }) => {
                     key={idx}
                     label={response.question?.text || "Question"}
                   >
-                    {response.response ||
-                      response.textResponse ||
-                      (response.optionId
-                        ? response.question.options.find(
-                            (o) => o.id === response.optionId,
-                          )?.text
-                        : "N/A")}
+                    {renderQuestionResponse(response)}
                   </Descriptions.Item>
                 ))}
               </Descriptions>
