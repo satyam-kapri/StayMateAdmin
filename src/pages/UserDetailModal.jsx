@@ -136,7 +136,9 @@ const UserDetailModal = ({ visible, onClose, user }) => {
             <Descriptions.Item label="Preferred Locations" span={2}>
               {profile?.preferredLocations?.length > 0 ? (
                 profile.preferredLocations.map((area, idx) => (
-                  <Tag key={idx}>{area}</Tag>
+                  <Tag key={idx}>
+                    {typeof area === "object" ? area.name : area}
+                  </Tag>
                 ))
               ) : (
                 <Text type="secondary">No specific locations listed</Text>
