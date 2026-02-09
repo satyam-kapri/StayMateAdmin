@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Modal,
   Descriptions,
@@ -133,43 +133,47 @@ const UserDetailModal = ({ visible, onClose, user }) => {
                 ? new Date(profile.moveInDate).toLocaleDateString()
                 : "Flexible"}
             </Descriptions.Item>
-            <Descriptions.Item label="Preferred Areas" span={2}>
-              {profile?.preferredAreas?.length > 0 ? (
-                profile.preferredAreas.map((area, idx) => (
+            <Descriptions.Item label="Preferred Locations" span={2}>
+              {profile?.preferredLocations?.length > 0 ? (
+                profile.preferredLocations.map((area, idx) => (
                   <Tag key={idx}>{area}</Tag>
                 ))
               ) : (
-                <Text type="secondary">No specific areas listed</Text>
+                <Text type="secondary">No specific locations listed</Text>
               )}
             </Descriptions.Item>
           </Descriptions>
 
           <Divider />
 
-          {/* Lifestyle & Habits */}
-          <Title level={5}>Lifestyle & Habits</Title>
-          <Descriptions bordered column={3} size="small" layout="vertical">
-            <Descriptions.Item label="Smoking">
-              <Tag color={profile?.smoking === "NEVER" ? "green" : "volcano"}>
-                {profile?.smoking || "N/A"}
-              </Tag>
-            </Descriptions.Item>
-            <Descriptions.Item label="Drinking">
-              <Tag>{profile?.drinking || "N/A"}</Tag>
-            </Descriptions.Item>
-            <Descriptions.Item label="Pets">
-              <Tag>{profile?.pets || "N/A"}</Tag>
-            </Descriptions.Item>
-            <Descriptions.Item label="Cleanliness">
-              <Tag color="blue">{profile?.cleanliness || "N/A"}</Tag>
-            </Descriptions.Item>
-            <Descriptions.Item label="Sleep Habit">
-              {profile?.sleepHabit || "N/A"}
-            </Descriptions.Item>
-            <Descriptions.Item label="Social Vibe">
-              {profile?.socialVibe || "N/A"}
-            </Descriptions.Item>
-          </Descriptions>
+          {/* Questionnaire Responses */}
+          {profile?.questionResponses?.length > 0 && (
+            <>
+              <Title level={5}>Questionnaire Responses</Title>
+              <Descriptions
+                bordered
+                column={1}
+                size="small"
+                layout="horizontal"
+              >
+                {profile.questionResponses.map((response, idx) => (
+                  <Descriptions.Item
+                    key={idx}
+                    label={response.question?.text || "Question"}
+                  >
+                    {response.response ||
+                      response.textResponse ||
+                      (response.optionId
+                        ? response.question.options.find(
+                            (o) => o.id === response.optionId,
+                          )?.text
+                        : "N/A")}
+                  </Descriptions.Item>
+                ))}
+              </Descriptions>
+              <Divider />
+            </>
+          )}
 
           {profile?.bio && (
             <div style={{ marginTop: 16 }}>
