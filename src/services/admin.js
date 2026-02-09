@@ -18,9 +18,24 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Add response interceptor for 401 handling
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/";
+      return Promise.reject(new Error("Session invalid or expired"));
+    }
+    return Promise.reject(error);
+  },
+);
+
 // Users API
 export const adminAPI = {
-  login: (phone) => api.post("/auth/fakeauth", { phoneNumber: phone }),
+  login: (phoneNumber, password) =>
+    api.post("/auth/login", { phoneNumber, password }),
   // Users
   getUsers: (params) => api.get("/user/users", { params }),
   getUserById: (id) => api.get(`/user/users/${id}`),

@@ -32,7 +32,7 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await adminAPI.login(values.phone);
+      const response = await adminAPI.login(values.phone, values.password);
       const token = response.data.sessionToken;
 
       if (token) {
@@ -134,17 +134,17 @@ export default function Login() {
               />
             </Form.Item>
 
-            {/* If you add a password field later, uncomment this:
             <Form.Item
               name="password"
-              rules={[{ required: true, message: 'Please input your Password!' }]}
+              rules={[
+                { required: true, message: "Please input your Password!" },
+              ]}
             >
               <Input.Password
-                prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
                 placeholder="Password"
               />
-            </Form.Item> 
-            */}
+            </Form.Item>
 
             <Form.Item>
               <Button
