@@ -35,7 +35,7 @@ api.interceptors.response.use(
 // Users API
 export const adminAPI = {
   login: (phoneNumber, password) =>
-    api.post("/auth/login", { phoneNumber, password }),
+    api.post("/auth/fakeauth", { phoneNumber, password }),
   // Users
   getUsers: (params) => api.get("/user/users", { params }),
   getUserById: (id) => api.get(`/user/users/${id}`),
